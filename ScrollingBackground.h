@@ -98,9 +98,14 @@ public:
         batch->Draw(mTexture.Get(), screenPos - textureSize, nullptr,
             Colors::White, 0.f, origin, g_XMOne, SpriteEffects_None, 0.f);
 
-        if (mTextureHeight < mScreenHeight)
+        //draw the bottom section as many parts as needed
+        int topY = mTextureHeight;
+        int count = 0;
+        while (topY < mScreenHeight)
         {
-            batch->Draw(mTexture.Get(), screenPos + textureSize, nullptr,
+            topY += mTextureHeight;
+            count += 1;
+            batch->Draw(mTexture.Get(), screenPos + (count * textureSize), nullptr,
                 Colors::White, 0.f, origin, g_XMOne, SpriteEffects_None, 0.f);
         }
     }
